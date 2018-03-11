@@ -1,0 +1,11 @@
+@mixin font_primary($size, $weight) {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-size: $size + px;
+  font-weight: $weight;
+}
+
+@mixin font_secondary($size, $weight) {
+  font-family: "Exo 2", Arial, sans-serif;
+  font-size: $size + px;
+  font-weight: $weight;
+}

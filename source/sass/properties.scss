@@ -1,0 +1,55 @@
+.properties__item {
+  display: block;
+
+  color: $color-text-card;
+}
+
+.properties__item--weight {
+  font-size: 42px;
+  line-height: 42px;
+
+  padding-right: 7px;
+  padding-left: 5px;
+
+  color: $color-text-page;
+}
+
+.properties__item--unit {
+  font-size: 21px;
+  line-height: 16px;
+
+  padding-right: 7px;
+  padding-left: 5px;
+
+  color: $color-text-page;
+}
+
+.properties__weight {
+  display: inline-block;
+
+  min-width: 81px;
+  max-width: 200px;
+  padding: 0;
+
+  text-align: center;
+
+  border-radius: 100%;
+}
+
+.properties__weight::before {
+  display: inline-block;
+
+  padding-top: 100%;
+
+  content: '';
+  vertical-align: middle;;
+}
+
+.properties__weight-wrapper {
+  display: inline-block;
+
+  max-width: 100%;
+
+  text-align: center;
+  vertical-align: middle;
+}

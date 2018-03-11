@@ -1,0 +1,216 @@
+.card {
+
+  @include font_primary(14, 300);
+}
+
+.card__wrapper {
+  display: flex; /*IE11 fix*/
+
+  width: 320px;
+  min-height: 472px;
+  padding: 4px;
+
+  background-image: linear-gradient(135deg, transparent 30px, $color-bg-card-default 0);
+
+  border-radius: 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-image: linear-gradient(135deg, transparent 30px, $color-bg-card-default-hover 0);
+  }
+}
+
+.card--clicked .card__wrapper {
+  background-image: linear-gradient(135deg, transparent 30px, $color-bg-card-selected 0);
+}
+
+.card--selected .card__wrapper:hover {
+  background-image: linear-gradient(135deg, transparent 30px, $color-bg-card-selected-hover 0);
+}
+
+.card--disabled .card__wrapper {
+  background-image: linear-gradient(135deg, transparent 30px, $color-bg-card-disabled 0);
+  cursor: no-drop;
+}
+
+.card__content {
+  display: flex;
+
+  flex-wrap: wrap;
+  min-height: 472px;
+  border-radius: 8px;
+  padding-left: 45px;
+  padding-top: 17px;
+  padding-right: 11px;
+  padding-bottom: 11px;
+
+  background-repeat: no-repeat;
+  background-position-x: -4px, 0;
+  background-position-y: calc(100% + 4px), 100%;
+  background-size: 261px 274px, auto auto;
+  overflow-x: hidden;
+}
+
+.webpalpha .card__content {
+  background-image: url(../img/bg-cat@1x.webp), linear-gradient(135deg, transparent 29px, $color-bg-card-content 0);
+
+  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    background-image: url(../img/bg-cat@2x.webp), linear-gradient(135deg, transparent 29px, $color-bg-card-content 0);
+  }
+}
+
+.no-webpalpha .card__content {
+  background-image: url(../img/bg-cat@1x.png), linear-gradient(135deg, transparent 29px, $color-bg-card-content 0);
+
+  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    background-image: url(../img/bg-cat@2x.png), linear-gradient(135deg, transparent 29px, $color-bg-card-content 0);
+  }
+}
+
+.card__content * {
+  pointer-events: none;
+}
+
+.card__description {
+  font-size: 16px;
+}
+
+.card__description--default {
+  color: $color-text-card;
+}
+
+.card--disabled .card__description--default {
+  opacity: 0.5;
+}
+
+.card--selected .card__wrapper:hover .card__description--default {
+  display: none;
+}
+
+.card__description--deselect {
+  display: none;
+  color: $color-text-deselect;
+}
+
+.card--selected .card__wrapper:hover .card__description--deselect {
+  display: block;
+}
+
+.card__title {
+  width: 100%;
+  padding-top: 5px;
+  margin-left: -3px;
+
+  font-size: 48px;
+  font-weight: 700;
+  color: $color-text-card-title;
+}
+
+.card--disabled .card__title {
+  opacity: 0.5;
+}
+
+.card__title-addition {
+  display: block;
+
+  padding-top: 1px;
+  margin-left: 3px;
+
+  font-size: 24px;
+  line-height: 22px;
+}
+
+.card__prorerties {
+  padding-top: 18px;
+}
+
+.card--disabled .card__prorerties {
+  opacity: 0.5;
+}
+
+.card__sticker {
+  align-self: flex-end;
+  margin-left: auto;
+  margin-top: 180px; /* cat-specific property, maintains the appearance of a cat*/
+}
+
+.card__sticker-background {
+  background-color: $color-bg-card-default;
+}
+
+.card__wrapper:hover .card__sticker-background {
+  background-color: $color-bg-card-default-hover;
+}
+
+.card--clicked .card__sticker-background {
+  background-color: $color-bg-card-selected;
+}
+
+.card--clicked .card__wrapper:hover .card__sticker-background {
+  background-color: $color-bg-card-selected;
+}
+
+.card--selected .card__wrapper:hover .card__sticker-background {
+  background-color: $color-bg-card-selected-hover;
+}
+
+.card--disabled .card__sticker-background {
+  background-color: $color-bg-card-disabled;
+}
+
+.card--disabled .card__wrapper:hover .card__sticker-background {
+  background-color: $color-bg-card-disabled;
+}
+
+.card__footer {
+  width: 320px;
+  padding-top: 14px;
+
+  text-align: center;
+}
+
+.card__info {
+  color: $color-text-page;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.004);
+
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.card--clicked .card__info--default {
+  display: none;
+}
+
+.card--disabled .card__info--default {
+  display: none;
+}
+
+.card__info--selected {
+  display: none;
+}
+
+.card--clicked .card__info--selected {
+  display: block;
+}
+
+.card__info--disabled {
+  display: none;
+  color: $color-text-warning;
+}
+
+.card--disabled .card__info--disabled {
+  display: block;
+}
+
+.card__link {
+  color: $color-text-link;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration-skip: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card__link-decoration {
+  border-bottom: 1px dashed $color-text-link-decoration;
+}
