@@ -17,17 +17,19 @@
   @media (min-width: $desktop-width) {
     margin-left: -80px;
 
+    align-items: stretch;
+
     justify-content: center;
   }
 }
 
 .catalog__item {
+  display: flex; /* Firefox 58.0.2 doesn't feel happy with "block + margin-bottom" for some reason... (ignores margin-bottom) */
+  flex-direction: column;
+
   margin-bottom: 35px;
 
   @media (min-width: $tablet-width) {
-    display: flex;
-    flex-direction: column;
-
     align-items: center;
     justify-content: center;
     flex-grow: 1;
@@ -38,6 +40,8 @@
   @media (min-width: $desktop-width) {
     margin-left: 80px;
 
+    align-items: stretch;
+
     flex-grow: 0;
     flex-basis: auto;
   }
@@ -47,8 +51,6 @@
   @media (min-width: $tablet-width) {
     width: 100%;
 
-    flex-grow: 1;
-    flex-shrink: 0;
     flex-basis: 100%;
   }
 

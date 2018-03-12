@@ -8,6 +8,7 @@
 
   width: 320px;
   min-height: 472px;
+  height: 100%;
   padding: 4px;
 
   background-image: linear-gradient(135deg, transparent 30px, $color-bg-card-default 0);
@@ -67,10 +68,6 @@
   }
 }
 
-.card__content * {
-  pointer-events: none;
-}
-
 .card__description {
   font-size: 16px;
 }
@@ -98,11 +95,12 @@
 
 .card__title {
   width: 100%;
-  padding-top: 5px;
+  padding-top: 11px;
   margin-left: -3px;
 
   font-size: 48px;
   font-weight: 700;
+  line-height: 44px;
   color: $color-text-card-title;
 }
 
@@ -113,7 +111,7 @@
 .card__title-addition {
   display: block;
 
-  padding-top: 1px;
+  padding-top: 6px;
   margin-left: 3px;
 
   font-size: 24px;
@@ -122,6 +120,12 @@
 
 .card__prorerties {
   padding-top: 18px;
+
+  color: $color-text-card;
+}
+
+.card__prorerties-count {
+  font-weight: 700;
 }
 
 .card--disabled .card__prorerties {
@@ -132,33 +136,31 @@
   align-self: flex-end;
   margin-left: auto;
   margin-top: 180px; /* cat-specific property, maintains the appearance of a cat*/
-}
 
-.card__sticker-background {
   background-color: $color-bg-card-default;
 }
 
-.card__wrapper:hover .card__sticker-background {
+.card__wrapper:hover .card__sticker {
   background-color: $color-bg-card-default-hover;
 }
 
-.card--clicked .card__sticker-background {
+.card--clicked .card__sticker {
   background-color: $color-bg-card-selected;
 }
 
-.card--clicked .card__wrapper:hover .card__sticker-background {
+.card--clicked .card__wrapper:hover .card__sticker {
   background-color: $color-bg-card-selected;
 }
 
-.card--selected .card__wrapper:hover .card__sticker-background {
+.card--selected .card__wrapper:hover .card__sticker {
   background-color: $color-bg-card-selected-hover;
 }
 
-.card--disabled .card__sticker-background {
+.card--disabled .card__sticker {
   background-color: $color-bg-card-disabled;
 }
 
-.card--disabled .card__wrapper:hover .card__sticker-background {
+.card--disabled .card__wrapper:hover .card__sticker {
   background-color: $color-bg-card-disabled;
 }
 
@@ -211,6 +213,6 @@
   cursor: pointer;
 }
 
-.card__link-decoration {
+.card__link-underlined {
   border-bottom: 1px dashed $color-text-link-decoration;
 }

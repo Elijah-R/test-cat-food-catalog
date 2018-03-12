@@ -1,6 +1,67 @@
 'use strict';
 
 (function () {
+    var CARD = {
+        itself: 'card',
+        disabled: 'card--disabled',
+        wrapper: 'card__wrapper',
+        clicked: 'card--clicked',
+        selected: 'card--selected',
+        bottomLink: 'card__link'
+    };
+    var MAX_WIDTH = '(max-width: 800px)';
+
+    var cards = document.querySelectorAll('.' + CARD.wrapper);
+    var links = document.querySelectorAll('.' + CARD.bottomLink);
+    var mediaQuery = window.matchMedia(MAX_WIDTH);
+
+    for (var i = 0; i < cards.length; i++) {
+        if (!cards[i].parentNode.classList.contains(CARD.disabled)) {
+            cards[i].addEventListener('click', cardClickHandler)
+        }
+    }
+
+    for (var k = 0; k < links.length; k++) {
+        links[k].addEventListener('click', linkClickHandler)
+    }
+
+    function cardClickHandler(evt) {
+        var cardWrapper = evt.target.closest('.' + CARD.wrapper);
+        var card = cardWrapper.parentNode;
+
+        if (card.classList.contains(CARD.clicked)) {
+            card.classList.remove(CARD.clicked);
+            card.classList.remove(CARD.selected);
+        }
+        else {
+            card.classList.add(CARD.clicked);
+            // prevents adding mouseout handler for tablets and phones (at least for some of them)
+            if (!mediaQuery.matches) {
+                cardWrapper.addEventListener('mouseleave', cardMouseLeaveHandler);
+            }
+        }
+
+        function cardMouseLeaveHandler(evt) {
+            // relatedTarget used because of Chrome bug (https://stackoverflow.com/questions/47649442/click-event-effects-mouseenter-and-mouseleave-on-chrome-is-it-a-bug)
+            if (evt.relatedTarget && card.classList.contains(CARD.clicked)) {
+                card.classList.add(CARD.selected);
+            }
+            cardWrapper.removeEventListener('mouseleave', cardMouseLeaveHandler);
+        }
+    }
+
+    function linkClickHandler(evt) {
+        var card = evt.target.closest('.' + CARD.itself);
+
+        if (card.classList.contains(CARD.clicked)) {
+            card.classList.remove(CARD.clicked);
+            card.classList.remove(CARD.selected);
+        }
+        else {
+            card.classList.add(CARD.clicked);
+            card.classList.add(CARD.selected);
+        }
+    }
 
     // region polyfill for #Element.closest
     if (typeof Element.prototype.matches !== 'function') {
@@ -29,54 +90,4 @@
     }
     // endregion
 
-    var cards = document.querySelectorAll('.card__wrapper');
-    var links = document.querySelectorAll('.card__link');
-    var mediaQuery = window.matchMedia('(max-width: 800px)');
-
-    for (var i = 0; i < cards.length; i++) {
-        if (!cards[i].parentNode.classList.contains('card--disabled')) {
-            cards[i].addEventListener('click', cardClickHandler)
-        }
-    }
-
-    for (var k = 0; k < links.length; k++) {
-        links[k].addEventListener('click', linkClickHandler)
-    }
-
-    function cardClickHandler(evt) {
-            var cardWrapper = evt.target.closest('.card__wrapper');
-            var card = cardWrapper.parentNode;
-
-            if (card.classList.contains('card--clicked')) {
-                card.classList.remove('card--clicked');
-                card.classList.remove('card--selected');
-            }
-            else {
-                card.classList.add('card--clicked');
-                // prevents adding mouseout handler for tablets and phones (at least for some of them)
-                if (!mediaQuery.matches) {
-                    cardWrapper.addEventListener('mouseout', cardMouseOutHandler);
-                }
-            }
-
-        function cardMouseOutHandler() {
-            if (card.classList.contains('card--clicked')) {
-                card.classList.add('card--selected');
-            }
-            cardWrapper.removeEventListener('mouseout', cardMouseOutHandler);
-        }
-    }
-
-    function linkClickHandler(evt) {
-        var card = evt.target.closest('.card');
-
-        if (card.classList.contains('card--clicked')) {
-            card.classList.remove('card--clicked');
-            card.classList.remove('card--selected');
-        }
-        else {
-            card.classList.add('card--clicked');
-            card.classList.add('card--selected');
-        }
-    }
 })();
