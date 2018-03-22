@@ -1,9 +1,9 @@
-# test-cat-food-catalog
+# Квалификационное задание
 
 As usual:
 
-npm i
+`npm i`
 
-npm run build
+`npm run build`
 
-nmp run start
+`nmp run start`
